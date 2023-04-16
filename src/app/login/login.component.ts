@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { EtudiantService } from '../http/etudiant.service';
 
 
 @Component({
@@ -10,8 +11,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms'
 export class LoginComponent implements OnInit {
 
   hide: boolean = false;
+  x:any
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private etudiantService:EtudiantService) {
   }
 
   ngOnInit() {
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]]
+    password: ['', [Validators.required, Validators.minLength(2)]]
   })
 
 
@@ -27,7 +29,10 @@ export class LoginComponent implements OnInit {
     if (!this.loginForm.valid) {
       return;
     }
-    console.log(this.loginForm.value);
+    const etudiant = this.loginForm.value;
+    this.x=this.etudiantService.login(etudiant.email,etudiant.password);
+    console.log(this.x);
+    // console.log(this.loginForm.value);
   }
 
 }

@@ -10,12 +10,17 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component'
 import { MatIconModule } from '@angular/material/icon';
+import { ListComponent } from './etudiant/list/list.component';
+import { AddComponent } from './etudiant/add/add.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ListComponent,
+    AddComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
